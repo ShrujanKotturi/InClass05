@@ -12,7 +12,7 @@ function User() {
                 page = page %20;
             }
             limits = 50 * (page - 1);
-            var query = con.query('SELECT * FROM Users WHERE (1=1) ORDER BY ? ? LIMIT ? , ?', [sortby, orderby, limits, 50], function (err, result) {
+            var query = con.query('SELECT * FROM Users WHERE (1=1) ORDER BY ?  LIMIT ? , ?', [sortby + ' ' + orderby, limits, 50], function (err, result) {
                 if(result.length != 0){
                     res.send(result);
                 }
