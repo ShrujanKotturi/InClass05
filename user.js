@@ -4,10 +4,15 @@ var util = require('util');
 
 function User() {
 
-    this.get = function (log, res) {
+    this.get = function (sortby,orderby,page, res) {
         connection.acquire(function(err, con) {
             console.log(log);
-            con.query('select * from Users ORBER BY ? ?',[log.sortby], [log.orderby], function(err, result) {
+            var limits;
+            if(page > 20){
+                page = page %20;
+            }
+            limits = 50 * (page - 1);
+            con.query('select * from Users ORBER BY ? ? LIMIT ? , 50',[sortby], [orderby], [limits] ,function(err, result) {
                 if(result.length != 0){
                     res.send(result);
                 }
