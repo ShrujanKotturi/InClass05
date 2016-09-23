@@ -14,7 +14,7 @@ function User() {
                 page = page %20;
             }
             limits = 50 * (page - 1);
-            con.query('select * from Users ORBER BY ? ? LIMIT ? , 50',[sortby], [orderby], [limits] ,function(err, result) {
+            con.query('select * from Users ORDER BY ? ? LIMIT ? , 50',[sortby], [orderby], [limits] ,function(err, result) {
                 if(result.length != 0){
                     res.send(result);
                 }
