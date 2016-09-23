@@ -4,11 +4,8 @@ var util = require('util');
 
 function User() {
 
-    this.get = function (sortby,orderby,page, res) {
-        connection.acquire(function(err, con) {
-            console.log(sortby);
-            console.log(orderby);
-            console.log(page);
+    this.get = function (sortby, orderby, spage, res) {
+        connection.acquire(function (err, con) {
             var limits;
             if(page > 20){
                 page = page %20;
