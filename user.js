@@ -12,14 +12,16 @@ function User() {
                 page = page %20;
             }
             limits = 50 * (page - 1);
-            var query = con.query('SELECT * FROM Users ORDER BY ?? ? LIMIT ? , ?', [sortby , orderby, limits, 50], function (err, result) {
+            var sql = 'SELECT * FROM Users ORDER BY ' + con.escapeId(sortby) + ' ' + con.escapeId(orderby) + ' LIMIT ' + limits + ', 50';
+            console.log("SQL : " + sql);
+            var query = con.query(sql, function (err, result) {
                 if(result.length != 0){
                     res.send(result);
                 }
                 else{
                     res.send({'status' : 'No Result'});
                 }
-                console.log(query);
+                //console.log(query);
             });
             con.release();
         });
