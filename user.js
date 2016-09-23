@@ -12,7 +12,7 @@ function User() {
                 page = page %20;
             }
             limits = 50 * (page - 1);
-            var sql = 'SELECT * FROM Users ORDER BY ' + con.escapeId(sortby) + ' ' + con.escapeId(orderby) + ' LIMIT ' + limits + ', 50';
+            var sql = 'SELECT * FROM Users ORDER BY ' + sortby + ' ' + orderby + ' LIMIT ' + limits + ', 50';
             console.log("SQL : " + sql);
             var query = con.query(sql, function (err, result) {
                 if(result.length != 0){
