@@ -14,7 +14,7 @@ function User() {
             limits = 50 * (page - 1);
             var sql = 'SELECT * FROM Users ORDER BY ' + sortby + ' ' + orderby + ' LIMIT ' + limits + ', 50';
             console.log("SQL : " + sql);
-            var query = con.query(sql, function (err, result) {
+            con.query(sql, function (err, result) {
                 if(result.length != 0){
                     res.send(result);
                 }
