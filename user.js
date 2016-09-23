@@ -6,7 +6,9 @@ function User() {
 
     this.get = function (sortby,orderby,page, res) {
         connection.acquire(function(err, con) {
-            console.log(log);
+            console.log(sortby);
+            console.log(orderby);
+            console.log(page);
             var limits;
             if(page > 20){
                 page = page %20;
